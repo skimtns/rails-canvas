@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'courses#index'
+
+  #this generates 2 routes that dont depend on the id
+  resources :users
+  resources :courses do
+    resources :enrollments, only: [:index, :new, :create, :destroy]
+  end 
 end
